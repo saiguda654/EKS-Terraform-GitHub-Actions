@@ -1,4 +1,4 @@
-/*terraform {
+terraform {
   backend "s3" {
     bucket         = "saiguda654-backend-1"
     key            = "terraform.tfstate"
@@ -6,4 +6,4 @@
     dynamodb_table = "Lock-Files"
     encrypt        = true
   }
-}*\
+}
