@@ -3,34 +3,6 @@ locals {
   env = var.env
 }
 
-resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "Lock-Files"
-  hash_key       = "lock-id"
-  billing_mode   = "PAY_PER_REQUEST"
-  attribute {
-    name = "lock-id"
-    type = "S"
-  }
-
-  tags = {
-    Name = "Terraform State Lock"
-  }
-}
-
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "saiguda654-backend-1"  # Ensure this bucket name is unique globally
-  region = "us-east-1"
-  acl    = "private"
-
-  versioning {
-    enabled = true
-  }
-
-  tags = {
-    Name = "Terraform State Storage"
-  }
-}
-
 module "eks" {
   source = "../module"
 
