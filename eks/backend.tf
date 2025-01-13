@@ -1,11 +1,11 @@
 terraform {
   required_version = "~> 1.10.0"
-
+  
   backend "s3" {
-    bucket         = aws_s3_bucket.terraform_state.bucket
+    bucket         = "saiguda654-backend"       # Use the S3 bucket name from the apply step
     region         = "us-east-1"
     key            = "eks/terraform.tfstate"
-    dynamodb_table = aws_dynamodb_table.terraform_state_lock.name
+    dynamodb_table = "Lock-Files"               # Use the DynamoDB table name from the apply step
     encrypt        = true
   }
 
