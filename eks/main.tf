@@ -5,7 +5,7 @@ locals {
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "saiguda654-backend-1"  # Make sure this name is globally unique
-  region = "us-east-1"
+  acl    = "private"
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
